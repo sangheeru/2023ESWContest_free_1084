@@ -69,7 +69,7 @@ void setup() {
 }
 
 void loop() {
-  zigXavComm();  // zigbee와 xavier 간의 통신 함수 호출
+  zigXavComm();  // zigbee와 jetson orin 간의 통신 함수 호출
   digitalWrite(5, mode_id);  // 디지털 핀의 출력 설정
 
   // 주기적으로 아두이노 데이터 전송
@@ -104,7 +104,7 @@ void loop() {
   DC.writeMicroseconds(sp);
   SV.writeMicroseconds(st);
 }
-// zigbee와 xavier 간의 통신을 처리하는 함수
+// zigbee와 jetson orin 간의 통신을 처리하는 함수
 void zigXavComm() {
   for (int i = 0; i < 2; i++) {
     char c = '\0';  // 수신된 문자

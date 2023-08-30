@@ -4,7 +4,7 @@ import threading
 
 # 아두이노에게 시리얼 통신을 통해 조향 및 속도값 전송을 수행하는 클래스
 class ArdComm:
-    joy_data = [512, 512, 0]  # 초기 조이스틱 데이터 값
+    joy_data = [512, 512, 0]  # 서보모터 및 DC모터 제어변수 초기화
     def __init__(self):
         self.ard_port = '/dev/ttyACM0'  # 아두이노 시리얼 포트 경로
         self.baud = 57600  # 통신 속도 (보드레이트)
@@ -20,10 +20,10 @@ class ArdComm:
 
         self.snd_header = b'JOY'  # 송신 데이터 헤더
         
-        self.send_joy()  # 조이스틱 데이터 송신 함수 호출
+        self.send_joy()  # 서보모터 및 DC모터 데이터 송신 함수 호출
         self.rcv_ard()  # 아두이노 데이터 수신 함수 호출
 
-    # 조이스틱 데이터를 아두이노로 송신하는 함수
+    # 서보모터 및 DC모터 데이터를 아두이노로 송신하는 함수
     def send_joy(self):
         if self.btn != 1:
             send_data = struct.pack(self.snd_struct_format, self.snd_header, *self.joy_data)

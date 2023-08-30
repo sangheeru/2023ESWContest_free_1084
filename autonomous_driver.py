@@ -9,8 +9,6 @@ import running_info_display
 import detectpose
 import undistort_image
 
-def weighted_img(img, initial_img, α=1, β=1., λ=0.): # 두 이미지 operlap 하기
-    return cv2.addWeighted(initial_img, α, img, β, λ)
 
 def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap): # 허프 변환
     lines = cv2.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
